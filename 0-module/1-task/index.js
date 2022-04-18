@@ -1,3 +1,3 @@
 function sum(m, n) {
-  // ваш код...
+  return arguments[0]+arguments[1]
 }
