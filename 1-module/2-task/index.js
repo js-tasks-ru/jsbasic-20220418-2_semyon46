@@ -11,7 +11,9 @@ function print(text) {
  */
 function isValid(name) {
   // ваш код...
+  return !!name && name.length>=4 && name.indexOf(' ')===-1
 }
+
 
 function sayHello() {
   let userName = prompt('Введите ваше имя');
