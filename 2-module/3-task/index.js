@@ -12,8 +12,5 @@ let calculator = {
 };
 
 
-
-console.log(calculator.returnVasya())
-calculator.read(2,5)
 // НЕ УДАЛЯТЬ СТРОКУ, НУЖНА ДЛЯ ПРОВЕРКИ
 window.calculator = calculator; // делает ваш калькулятор доступным глобально
