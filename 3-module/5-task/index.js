@@ -14,5 +14,3 @@ function getMinMax(str) {
  return result
 }
 
-const test = '25 : -1 / -234 - 4 = 1000'
-console.log(getMinMax(test))
