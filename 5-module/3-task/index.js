@@ -4,7 +4,7 @@ function initCarousel() {
   const prevBtn = document.querySelector('.carousel__arrow_left')
   prevBtn.style.display = 'none'
   const slider = document.querySelector('.carousel__inner')
-  let numberSlider = 1
+  let numberSlider = 0
 
   if (slider.children.length===1){
     nextBtn.style.display = 'none'
@@ -12,19 +12,19 @@ function initCarousel() {
   }
 
   nextBtn.addEventListener('click', ()=>{
-    slider.style.transform = `translateX(-${numberSlider*slider.offsetWidth}px)`
+    slider.style.transform = `translateX(-${(numberSlider+1)*slider.offsetWidth}px)`
     numberSlider++
     prevBtn.style.display = ''
-    if (numberSlider===slider.children.length){
+    if (numberSlider===slider.children.length-1){
       nextBtn.style.display = 'none'
     }
   })
 
   prevBtn.addEventListener('click', ()=>{
-    slider.style.transform = `translateX(-${(numberSlider-2)*slider.offsetWidth}px)`
+    slider.style.transform = `translateX(-${(numberSlider-1)*slider.offsetWidth}px)`
     numberSlider--
     nextBtn.style.display = ''
-    if (numberSlider===1){
+    if (numberSlider===0){
       prevBtn.style.display = 'none'
     }
   })
