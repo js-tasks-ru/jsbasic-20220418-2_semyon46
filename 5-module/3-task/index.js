@@ -8,7 +8,6 @@ function initCarousel() {
 
   if (slider.children.length===1){
     nextBtn.style.display = 'none'
-    prevBtn.style.display = 'none'
     return
   }
 
