@@ -1,5 +1,5 @@
 import categories from './categories.js';
-import RibbonMenu from './index.js';
+import ribbonDiv from './index.js';
 
 describe('7-module-1-task', () => {
   let sut;
@@ -11,7 +11,7 @@ describe('7-module-1-task', () => {
   let clickEvent;
 
   beforeEach(() => {
-    sut = new RibbonMenu(categories);
+    sut = new ribbonDiv(categories);
     document.body.append(sut.elem);
 
     ribbonInner = sut.elem.querySelector('.ribbon__inner');
