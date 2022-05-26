@@ -2,18 +2,17 @@ import createElement from '../../assets/lib/create-element.js';
 
 export default class CartIcon {
   constructor() {
-    this.render();
-
-    this.addEventListeners();
+    this.render()
+    this.addEventListeners()
   }
 
   render() {
-    this.elem = createElement('<div class="cart-icon"></div>');
+    this.elem = createElement('<div class="cart-icon"></div>')
   }
 
   update(cart) {
     if (!cart.isEmpty()) {
-      this.elem.classList.add('cart-icon_visible');
+      this.elem.classList.add('cart-icon_visible')
 
       this.elem.innerHTML = `
         <div class="cart-icon__inner">
@@ -21,12 +20,12 @@ export default class CartIcon {
           <span class="cart-icon__price">€${cart.getTotalPrice().toFixed(2)}</span>
         </div>`;
 
-      this.updatePosition();
+      this.updatePosition()
 
-      this.elem.classList.add('shake');
+      this.elem.classList.add('shake')
       this.elem.addEventListener('transitionend', () => {
-        this.elem.classList.remove('shake');
-      }, {once: true});
+        this.elem.classList.remove('shake')
+      }, {once: true})
 
     } else {
       this.elem.classList.remove('cart-icon_visible');
@@ -34,11 +33,40 @@ export default class CartIcon {
   }
 
   addEventListeners() {
-    document.addEventListener('scroll', () => this.updatePosition());
-    window.addEventListener('resize', () => this.updatePosition());
+    document.addEventListener('scroll', () => this.updatePosition())
+    window.addEventListener('resize', () => this.updatePosition())
   }
 
   updatePosition() {
-    // ваш код ...
+    if (window.pageYOffset > 50) {
+      const leftOffset = `${Math.min(
+        document.querySelector('.container').getBoundingClientRect().right + 20,
+        document.documentElement.clientWidth - this.elem.offsetWidth - 10
+      )}px`
+
+      Object.assign(this.elem.style, {
+        position: 'fixed',
+        top: '50px',
+        zIndex: 5,
+        right: '10px',
+        left: leftOffset
+      })
+    } else {
+      Object.assign(this.elem.style, {
+        position: '',
+        top: '',
+        left: '',
+        zIndex: ''
+      })
+    }
+
+    if (document.documentElement.clientWidth <= 770) {
+      Object.assign(this.elem.style, {
+        position: '',
+        top: '',
+        left: '',
+        zIndex: ''
+      });
+    }
   }
 }
